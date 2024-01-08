@@ -1,11 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Simon Game: TP Final</title>
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="css/reset.css" />
+      </head>
+      <body>
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <p id="modal-message" class="modal-message"></p>
+            <div class="modal-close" id="modal-close">ACEPTAR</div>
+          </div>
+        </div>
+        <div id="ranking" class="modal">
+          <div class="modal-content">
+            <p id="ranking-title" class="modal-message">
+              TOP 10 DE TODOS LOS TIEMPOS
+            </p>
+            <li class="ranking-item">
+              <span class="ranking-item-title" id="ranking-position-title">🏆</span>
+              <span class="ranking-item-title" id="ranking-name-title">NOMBRE</span>
+              <span class="ranking-item-title" id="ranking-level-title">NIVEL</span>
+              <span class="ranking-item-title" id="ranking-points-title">
+                PUNTOS
+              </span>
+              <span class="ranking-item-title" id="ranking-date-title">FECHA</span>
+            </li>
+            <ul id="ranking-list"></ul>
+            <div class="modal-close" id="ranking-close">ACEPTAR</div>
+          </div>
+        </div>
+        <div class="main-content">
+          <section class="game-main-content">
+            <h1>Juego Simón</h1>
+            <h3>Lenguajes de Programación para la Administración: TP Final</h3>
+            <div class="row">
+              <h2>AHORA ESTÁ JUGANDO:</h2>
+              <input id="input-name" class="name-input" type="text" />
+            </div>
+            <div class="game-device">
+              <div class="row">
+                <div class="game-button" id="green"></div>
+                <div class="game-button" id="red"></div>
+              </div>
+              <div class="row">
+                <div class="game-button" id="blue"></div>
+                <div class="game-button" id="yellow"></div>
+              </div>
+              <div class="game-display">
+                <button class="start-button" id="start-button" type="button">
+                  INICIAR
+                </button>
+                <div class="game-display-details">
+                  <div class="state" id="state">-</div>
+                  <div class="score-content">
+                    <div class="score" id="level">-</div>
+                    <div class="score" id="timer">-</div>
+                    <div class="score" id="score">-</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="instructions">
+            <h4>Reglamento:</h4>
+            <p>
+              El juego consiste en memorizar las secuencias de colores que se
+              muestran en pantalla y luego ingresarlas en el mismo orden en el que
+              se mostraron. Se avanza en niveles, donde cada nivel se corresponde
+              con la cantidad de colores de la secuencia a memorizar. Cada nuevo
+              nivel repite la secuencia anterior y agrega un color nuevo. Se avanza
+              de niveles mientras se ingrese la secuencia en el orden correcto y se
+              pierde el juego cuando no se respete el orden. Cuando se pierde, se
+              toma la puntución máxima alcanzada y se resta a la misma 1 punto por
+              cada 15 segundos transcurridos del juego.
+            </p>
+            <p>
+              1) Presioná 'Iniciar' para comenzar un nuevo juego. Es necesario que
+              ingreses tu nombre
+            </p>
+            <p>
+              2) Se te va a mostrar la secuencia correspondiente al nivel.
+              Memorizala!
+            </p>
+            <p>3) Esperá la orden para ingresarla.</p>
+            <p>Hay niveles infinitos, veamos hasta cuál llegás. A jugar!</p>
+          </section>
+        </div>
+        <footer>
+          <div class="footer-menu">
+            <div class="footer-menu-item" id="button-github">Github</div>
+            <div class="footer-menu-item" id="button-score">Puntuaciones</div>
+            <div class="footer-menu-item" id="button-contact">Contacto</div>
+          </div>
+        </footer>
+        <script src="js/game-dom-events.js"></script>
+        <script src="js/game.js"></script>
+      </body>
 </html>
