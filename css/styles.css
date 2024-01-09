@@ -1,0 +1,330 @@
+@import url(https://db.onlinewebfonts.com/c/4c19fc875e7ba1e6831129de3ab5ac0b?family=Retro+Gaming);
+
+/* pseudo-class selectors */
+
+:root {
+  /* desktop */
+  --device-size: 450px;
+  --device-button-size: 225px; /* --device-button-size must be half size of device */
+  --device-display-height: 100px;
+  --device-display-width: 240px;
+  --device-display-top: 170px; /* (--device-size / 2 ) - (--device-display-height / 2) */
+  --device-display-left: 105px; /* (--device-size / 2 ) - (--device-display-width / 2) */
+  /* mobile */
+  --device-size-mobile: 300px;
+  --device-button-size-mobile: 150px;
+  --device-display-height-mobile: 100px;
+  --device-display-width-mobile: 200px;
+  --device-display-top-mobile: 100px;
+  --device-display-left-mobile: 50px;
+  /* colors */
+  --dark-grey-color: #1f1f1f;
+}
+
+/* element selectors */
+
+html {
+  background-color: var(--dark-grey-color);
+  font-family: 'Retro Gaming';
+  color: #ffffff;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+footer {
+  padding: 30px;
+  font-size: 14px;
+}
+
+h1 {
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-size: 36px;
+}
+
+h2 {
+  margin-top: 25px;
+  margin-right: 8px;
+  font-size: 16px;
+  font-weight: lighter;
+  color: #adff2f;
+}
+
+h3 {
+  margin-top: 5px;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-size: 15px;
+  font-weight: lighter;
+  color: #ffffff;
+}
+
+h4 {
+  margin-bottom: 10px;
+}
+
+input {
+  border-radius: 0;
+}
+
+/* class selectors */
+
+.main-content {
+  flex: 1;
+}
+
+.footer-copyright {
+  padding: 10px 50px 0px 50px;
+  border-top: 1px solid #ffffff;
+}
+
+.footer-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.footer-menu-item {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.name-input {
+  outline: none var(--dark-grey-color);
+  width: 18px;
+  min-width: 18px;
+  padding-top: 25px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #f5f5dc;
+  font-size: 16px;
+  font-family: 'Retro Gaming';
+  color: #adff2f;
+  text-transform: uppercase;
+}
+
+.game-main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-device {
+  box-shadow: 0px 0px 7px 7px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: var(--device-size-mobile);
+  height: var(--device-size-mobile);
+  margin-top: 30px;
+  background-color: #1f1f1f;
+  border: 20px solid black;
+  border-radius: 50%;
+}
+
+.game-display {
+  position: absolute;
+  top: var(--device-display-top-mobile);
+  left: var(--device-display-left-mobile);
+  box-sizing: border-box;
+  width: var(--device-display-width-mobile);
+  height: var(--device-display-height-mobile);
+  background: black;
+  border-color: #000000;
+  border-radius: 5px;
+}
+
+.game-display-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0px 8px 8px 8px;
+  padding: 3px 0px 7px 0px;
+  background: #1f1f1f;
+  border-radius: 3px;
+}
+
+.game-button {
+  box-sizing: border-box;
+  width: var(--device-button-size-mobile);
+  height: var(--device-button-size-mobile);
+  cursor: pointer;
+  border: 10px solid black;
+}
+
+.row {
+  display: flex;
+}
+
+.start-button {
+  margin-top: 12px;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: 'Retro Gaming';
+  color: #ffffff;
+}
+
+.state {
+  margin-top: 8px;
+  font-size: 10px;
+  color: #f5f5dc;
+}
+
+.score-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.score {
+  margin-top: 8px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: #4dff00;
+}
+
+.sounds {
+  display: none;
+}
+
+.instructions {
+  position: initial;
+  width: fit-content;
+  margin: 40px;
+  padding: 20px;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+}
+
+.modal {
+  display: none;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  position: relative;
+  width: 80%;
+  max-width: 400px;
+  margin: 15% auto;
+  padding: 20px;
+  background-color: var(--dark-grey-color);
+  border: 1px solid #888888;
+  font-size: 14px;
+}
+
+.modal-message {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.modal-close {
+  margin-top: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: lighter;
+  color: #adff2f;
+}
+
+.ranking-item-title {
+  cursor: pointer;
+}
+
+.ranking-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0px 8px 0px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+}
+
+.ranking-item span {
+  flex: 1;
+}
+
+/* id selectors */
+
+#green {
+  background-color: #006400;
+  border-radius: var(--device-button-size) 0 0 0;
+}
+
+#red {
+  background-color: #8b0000;
+  border-radius: 0 var(--device-button-size) 0 0;
+}
+
+#blue {
+  background-color: #00008b;
+  border-radius: 0 0 0 var(--device-button-size);
+}
+
+#yellow {
+  background-color: #daa520;
+  border-radius: 0 0 var(--device-button-size) 0;
+}
+
+#ranking-title {
+  padding-bottom: 20px;
+  color: #f5f5dc;
+}
+
+/* descendant selectors */
+
+.instructions p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+#ranking .modal-content {
+  max-width: 1000px;
+}
+
+/* media queries  */
+
+@media screen and (min-width: 1200px) {
+  .instructions {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    margin-right: 0px;
+    margin-left: 0px;
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .game-device {
+    width: var(--device-size);
+    height: var(--device-size);
+  }
+
+  .game-button {
+    width: var(--device-button-size);
+    height: var(--device-button-size);
+  }
+
+  .game-display {
+    top: var(--device-display-top);
+    left: var(--device-display-left);
+    width: var(--device-display-width);
+    height: var(--device-display-height);
+  }
+}
