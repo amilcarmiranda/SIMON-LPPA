@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simon Game: Contact</title>
+    <link rel="stylesheet" type="text/css" href="css/form.css" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+  </head>
+  <body>
+    <div class="main-content">
+      <form>
+        <div class="form-content">
+          <h1>CONTACTO</h1>
+          <div class="input-container">
+            <div class="row">
+              <label for="name">Nombre:</label>
+              <input id="name" type="text" />
+            </div>
+            <span class="error" id="nameError"></span>
+          </div>
+          <div class="input-container">
+            <div class="row">
+              <label for="email">Email:</label>
+              <input id="email" type="email" />
+            </div>
+            <span class="error" id="emailError"></span>
+          </div>
+          <div class="input-container">
+            <div class="row">
+              <label for="message">Mensaje:</label>
+              <input id="message" type="text" />
+            </div>
+            <span class="error" id="messageError"></span>
+          </div>
+          <div class="form-button" id="form-button">ENVIAR</div>
+        </div>
+      </form>
+      <script src="js/form.js"></script>
+      <script src="js/form-dom-events.js"></script>
+    </div>
+  </body>
+</html>
