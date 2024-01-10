@@ -46,3 +46,41 @@ h1 {
     font-family: 'Retro Gaming';
     color: #ffffff;
   }
+
+  /* id selectors */
+
+.main-content {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    margin: 25% auto;
+    padding: 20px;
+    border: 1px solid #888888;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 15px 0px;
+    text-align: right;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .error {
+    margin-top: 2px;
+    font-size: 10px;
+    color: #ff0000;
+  }
+  
