@@ -1,0 +1,22 @@
+@import url(https://db.onlinewebfonts.com/c/4c19fc875e7ba1e6831129de3ab5ac0b?family=Retro+Gaming);
+
+/* pseudo-class selectors */
+
+:root {
+  --dark-grey-color: #1f1f1f;
+}
+
+/* element selectors */
+
+html {
+  background-color: var(--dark-grey-color);
+  font-size: 14px;
+  font-family: 'Retro Gaming';
+  color: #ffffff;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
