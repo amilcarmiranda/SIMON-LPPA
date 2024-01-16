@@ -100,5 +100,98 @@ function startTimer() {
     seconds = 0;
     showTimer('00:00:00');
   }
+
+  
+function createLevel() {
+  currentLevel++;
+  showLevel(currentLevel);
+  var randomColor = gameColors[Math.floor(Math.random() * gameColors.length)];
+  sequence.push(randomColor);
+  clearSequenceEntered();
+  showLevelSequence(0);
+}
+
+function playAudio(color) {
+  document.getElementById(color + '-sound').play();
+}
+
+function showLevelSequence(colorIndex) {
+  showingLevelSecuence = true;
+  setGameState(PlayingStatus.sequenceShowing);
+  buttonPressed(sequence[colorIndex]);
+  setTimeout(function () {
+    var nextColorIndex = colorIndex + 1;
+    if (nextColorIndex < sequence.length) {
+      setTimeout(function () {
+        showLevelSequence(nextColorIndex);
+      }, 500);
+    } else {
+      showingLevelSecuence = false;
+      setGameState(PlayingStatus.sequenceWaiting);
+    }
+  }, 1000);
+}
+
+function colorClicked(color) {
+  if (!showingLevelSecuence) {
+    sequenceEntered.push(color);
+    buttonPressed(color);
+    if (sequenceEntered.length <= sequence.length) {
+      var currentColorIndex = sequenceEntered.length - 1;
+      if (sequenceEntered[currentColorIndex] == sequence[currentColorIndex]) {
+        currentPoints += 1;
+        showPoints(currentPoints);
+        if (sequenceEntered.length == sequence.length) {
+          setGameState(PlayingStatus.sequenceCorrect);
+          setTimeout(function () {
+            createLevel();
+          }, 2000);
+        }
+      } else {
+        showFinalResults();
+        saveResult();
+        clearGame();
+      }
+    }
+  }
+}
+
+function buttonPressed(button) {
+  switch (button) {
+    case GameColors.red:
+      buttonRed.style.background = '#ff6347';
+      break;
+    case GameColors.blue:
+      buttonBlue.style.background = '#87cefa';
+      break;
+    case GameColors.green:
+      buttonGreen.style.background = '#90ee90';
+      break;
+    case GameColors.yellow:
+      buttonYellow.style.background = '#ffff00';
+      break;
+  }
+  playAudio(button);
+  setTimeout(function () {
+    buttonDefault(button);
+  }, 250);
+}
+
+function buttonDefault(button) {
+  switch (button) {
+    case GameColors.red:
+      buttonRed.style.background = '#8b0000';
+      break;
+    case GameColors.blue:
+      buttonBlue.style.background = '#00008b';
+      break;
+    case GameColors.green:
+      buttonGreen.style.background = '#006400';
+      break;
+    case GameColors.yellow:
+      buttonYellow.style.background = '#daa520';
+      break;
+  }
+}
   
   
