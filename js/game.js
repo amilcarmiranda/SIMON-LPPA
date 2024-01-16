@@ -76,3 +76,29 @@ window.onload = function () {
     }
   }
   
+function startTimer() {
+    timer = setInterval(function () {
+      seconds++;
+      if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+          minutes = 0;
+          hours++;
+        }
+      }
+      showTimer(
+        to2Places(hours) + ':' + to2Places(minutes) + ':' + to2Places(seconds)
+      );
+    }, 1000);
+  }
+  
+  function clearTimer() {
+    clearInterval(timer);
+    hours = 0;
+    minutes = 0;
+    seconds = 0;
+    showTimer('00:00:00');
+  }
+  
+  
