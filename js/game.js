@@ -42,3 +42,37 @@ var timer;
 var hours = 0;
 var minutes = 0;
 var seconds = 0;
+
+/* functions  */
+
+window.onload = function () {
+    clearGame();
+  };
+  
+  function openModal(message) {
+    modalMessage.innerText = message;
+    modal.style.display = 'flex';
+  }
+  
+  function closeModal() {
+    modal.style.display = 'none';
+    ranking.style.display = 'none';
+  }
+  
+  function newGame() {
+    if (nameInput.value.length < 3) {
+      openModal('Ingresá un nombre de más de 3 caracteres');
+      return;
+    }
+    nameInput.disabled = true;
+    startTimer();
+    if (!gameStarted && !showingLevelSecuence) {
+      gameStarted = true;
+      setStartButton('EN CURSO');
+      // audio not played and showing error inside setTimeout -> FIX
+      // setTimeout(function() {
+      createLevel();
+      // }, 1000);
+    }
+  }
+  
