@@ -194,4 +194,110 @@ function buttonDefault(button) {
   }
 }
   
-  
+ function getRanking() {
+  var storedRanking = localStorage.getItem('ranking');
+  return storedRanking ? JSON.parse(storedRanking) : [];
+}
+
+function updateRanking(newItem) {
+  var ranking = getRanking();
+  ranking.push(newItem);
+  localStorage.setItem('ranking', JSON.stringify(ranking));
+}
+
+function showFinalResults() {
+  finalPoints = currentPoints - calculatePenalization();
+  var points = 'Puntos alcanzados: ' + currentPoints;
+  var penalization = 'Penalización: ' + calculatePenalization();
+  var final = 'PUNTAJE FINAL: ' + finalPoints;
+  openModal(
+    'Ingresaste un color incorrecto! Perdiste :(\n\n' +
+      points +
+      '\n' +
+      penalization +
+      '\n\n' +
+      final
+  );
+}
+
+function saveResult() {
+  var result = {
+    name: nameInput.value,
+    level: currentLevel,
+    points: finalPoints,
+    date: Date(Date.now()),
+  };
+  updateRanking(result);
+}
+
+function showRanking(order) {
+  ranking.style.display = 'flex';
+  rankingList.innerHTML = '';
+
+  var storedRanking = getRanking();
+  storedRanking = storedRanking.sort(function (a, b) {
+    return b.points - a.points;
+  });
+  storedRanking = storedRanking.slice(0, 10);
+
+  var rankingWithPosition = storedRanking.map(function (item, index) {
+    return {
+      position: index + 1, // add position number
+      name: item.name,
+      level: item.level,
+      points: item.points,
+      date: item.date,
+    };
+  });
+
+  switch (order) {
+    case RankingOrder.name:
+      rankingWithPosition = rankingWithPosition.sort(function (a, b) {
+        return a.name.localeCompare(b.name);
+      });
+      break;
+    case RankingOrder.level:
+      rankingWithPosition = rankingWithPosition.sort(function (a, b) {
+        return b.level - a.level;
+      });
+      break;
+    case RankingOrder.points:
+      rankingWithPosition = rankingWithPosition.sort(function (a, b) {
+        return b.points - a.points;
+      });
+      break;
+    case RankingOrder.date:
+      rankingWithPosition = rankingWithPosition.sort(function (a, b) {
+        return new Date(b.date) - new Date(a.date);
+      });
+      break;
+  }
+
+  while (rankingWithPosition.length < 10) {
+    rankingWithPosition.push({
+      name: '-',
+      level: '-',
+      points: '-',
+      date: '-',
+      position: 10,
+    });
+  }
+
+  rankingWithPosition.forEach(function (item) {
+    var rankingItem = document.createElement('li');
+    rankingItem.classList.add('ranking-item');
+    rankingItem.innerHTML =
+      createSpanRankingItem('# ' + item.position) +
+      createSpanRankingItem(item.name.toUpperCase()) +
+      createSpanRankingItem(item.level) +
+      createSpanRankingItem(item.points) +
+      createSpanRankingItem(visualFormattedDatetime(item.date));
+    rankingList.appendChild(rankingItem);
+  });
+}
+
+function createSpanRankingItem(value) {
+  return '<span>' + value + '</span>';
+}
+
+ 
