@@ -301,3 +301,78 @@ function createSpanRankingItem(value) {
 }
 
  
+function clearGame() {
+  gameStarted = false;
+  currentLevel = 0;
+  currentPoints = 0;
+  finalPoints = 0;
+  sequence = [];
+  nameInput.disabled = false;
+  clearSequenceEntered();
+  setGameState(PlayingStatus.notStarted);
+  setStartButton('INICIAR');
+  showLevel(0);
+  showPoints(0);
+  clearTimer();
+}
+
+function showLevel(value) {
+  labelLevel.innerText = 'Nvl: ' + value;
+}
+
+function showPoints(value) {
+  labelScore.innerText = 'Pts: ' + value;
+}
+
+function showTimer(value) {
+  labelTimer.innerText = value;
+}
+
+function clearSequenceEntered() {
+  sequenceEntered = [];
+}
+
+function setGameState(newState) {
+  labelState.innerText = newState;
+  switch (newState) {
+    case PlayingStatus.notStarted:
+      labelState.style.color = 'white';
+      break;
+    case PlayingStatus.sequenceShowing:
+      labelState.style.color = 'yellow';
+      break;
+    case PlayingStatus.sequenceWaiting:
+      labelState.style.color = 'tomato';
+      break;
+    case PlayingStatus.sequenceCorrect:
+      labelState.style.color = 'lightgreen';
+      break;
+  }
+}
+
+function setStartButton(title) {
+  buttonStart.innerText = title;
+}
+
+/* utils */
+
+function to2Places(value) {
+  return String(value).padStart(2, '0');
+}
+
+function calculatePenalization() {
+  return Math.trunc((hours * 60 * 60 + minutes * 60 + seconds) / 15);
+}
+
+function visualFormattedDatetime(datetime) {
+  var parsedDate = new Date(datetime);
+  if (isNaN(parsedDate)) {
+    return '-';
+  }
+  var day = to2Places(parsedDate.getDate());
+  var month = to2Places(parsedDate.getMonth() + 1);
+  var year = parsedDate.getFullYear();
+  var hours = to2Places(parsedDate.getHours());
+  var minutes = to2Places(parsedDate.getMinutes());
+  return day + '/' + month + '/' + year + ' ' + hours + ':' + minutes;
+}
