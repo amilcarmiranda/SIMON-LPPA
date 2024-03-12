@@ -69,10 +69,8 @@ window.onload = function () {
     if (!gameStarted && !showingLevelSecuence) {
       gameStarted = true;
       setStartButton('EN CURSO');
-      // audio not played and showing error inside setTimeout -> FIX
-      // setTimeout(function() {
-      createLevel();
-      // }, 1000);
+          createLevel();
+      
     }
   }
   
@@ -111,9 +109,7 @@ function createLevel() {
   showLevelSequence(0);
 }
 
-function playAudio(color) {
-  document.getElementById(color + '-sound').play();
-}
+
 
 function showLevelSequence(colorIndex) {
   showingLevelSecuence = true;
@@ -171,7 +167,7 @@ function buttonPressed(button) {
       buttonYellow.style.background = '#ffff00';
       break;
   }
-  playAudio(button);
+  
   setTimeout(function () {
     buttonDefault(button);
   }, 250);
